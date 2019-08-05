@@ -4,6 +4,7 @@ import static com.dvlcube.app.manager.data.e.Menu.MONITORING;
 import static com.dvlcube.utils.query.MxQuery.$;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dvlcube.app.interfaces.MenuItem;
+import com.dvlcube.app.rest.vo.MenuGroupVo;
 import com.dvlcube.utils.aspects.stats.Stat;
 import com.dvlcube.utils.aspects.stats.Stats;
 import com.dvlcube.utils.interfaces.MxService;
@@ -41,7 +43,11 @@ public class StatService implements MxService {
 	 */
 	@GetMapping
 	public List<Stat> get(@RequestParam Map<String, String> params) {
-		return Stats.values();
+		List<Stat> retorno = Stats.values();
+		retorno.sort(Comparator
+				.comparingLong(Stat::getTotal).reversed()
+				.thenComparingDouble(Stat::avg).reversed());
+		return retorno;
 	}
 
 	/**

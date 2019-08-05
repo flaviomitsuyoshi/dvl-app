@@ -89,7 +89,8 @@ this.state = {
     </div>
     <div class="footer-copyright">
         <div class="container">
-            dvl-core.it
+        	<div class="row">dvl-core.it</div>
+        	<div class="row">Flavio M. T. Ota</div>
         </div>
     </div>
 </footer>

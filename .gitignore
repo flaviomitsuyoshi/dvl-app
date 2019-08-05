@@ -1,12 +1,14 @@
 target
 !.mvn/wrapper/maven-wrapper.jar
 .attach_pid*
+.classpath
 
 ### STS ###
 .apt_generated
 .factorypath
 .springBeans
 .sts4-cache
+.settings
 
 ### IntelliJ IDEA ###
 .idea
